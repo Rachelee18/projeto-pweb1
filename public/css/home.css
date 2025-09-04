@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d9d9d9;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #3b6024;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .icon {
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    gap: 60px;
+    justify-content: center;
+    align-content: center;
+    height: calc(100vh - 60px);
+    
+}
+
+.card {
+    background-color: #3b6024;
+    color: white;
+    border-radius: 12px;
+    width: 220px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+    text-decoration: none;
+}
+
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card svg {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 12px;
+    stroke: white;
+}
+
+.navbar-aluno {
+    background-color: #3b6024;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-aluno .icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+}
+
