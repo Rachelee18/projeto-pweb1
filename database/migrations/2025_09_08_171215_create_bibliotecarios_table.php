@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('bibliotecarios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nome');
+            $table->string('email'); 
+            $table->string('senha')->unique();
+            $table->timestamps(); 
         });
     }
 
