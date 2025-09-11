@@ -3,8 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Aluno extends Model
 {
-    //
+    use Hasfactory;
+
+    protected $table = 'alunos';
+    protected $primarykey = 'id';
+    protected $fillable = [
+        'nome',
+        'email',
+        'senha',
+        'matricula',
+        'curso'
+    ];
+    public $timestamps = false;
 }
+
+
