@@ -9,7 +9,7 @@
 <body>
     <div class="login-box">
         <h2>Login</h2>
-        <form action="{{ route('home.bibliotecario') }}" method="GET">
+        <form action="{{ route('home.bibliotecario') }}" method="post">
             @csrf
             <input type="text" name="user" placeholder="User or Email" required>
             <input type="password" name="password" placeholder="Your Password" required>
