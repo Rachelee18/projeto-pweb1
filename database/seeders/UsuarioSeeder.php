@@ -27,6 +27,40 @@ class UsuarioSeeder extends Seeder
             'curso' => 'Sistemas'
         ]);
 
+            
+        Aluno::create(attributes: [
+        'nome' => 'Caíque Fernandes',
+        'email' => 'Caique@ifce.edu.br',
+        'senha' => '11223',
+        'matricula' => '2025003',
+        'curso' => 'Sistemas'
+        ]);
+
+        Aluno::create(attributes: [
+            'nome' => 'Ana Beatriz',
+            'email' => 'ana@ifce.edu.br',
+            'senha' => '33445',
+            'matricula' => '2025004',
+            'curso' => 'Sistemas'
+        ]);
+
+        Aluno::create(attributes: [
+            'nome' => 'Lucas Gabriel',
+            'email' => 'lucas@ifce.edu.br',
+            'senha' => '55667',
+            'matricula' => '2025005',
+            'curso' => 'Engenharia'
+        ]);
+
+        Aluno::create(attributes: [
+            'nome' => 'Larissa Moura',
+            'email' => 'larissa@ifce.edu.br',
+            'senha' => '77889',
+            'matricula' => '2025006',
+            'curso' => 'Fisica'
+        ]);
+
+
 
         Bibliotecario::create(attributes: [
             'nome' => 'Guilherme Leandro',
