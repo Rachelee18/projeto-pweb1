@@ -8,20 +8,20 @@ Route::get('/', function () {
 });
 
 // ========== LOGIN ==========
-Route::get('/login/bibliotecario', function () {
+Route::post('/login/bibliotecario', function () {
     return view('login-bibliotecario');
 })->name('login.bibliotecario');
 
-Route::get('/login/aluno', function () {
+Route::post('/login/aluno', function () {
     return view('login-aluno');
 })->name('login.aluno');
 
 // ========== HOME ==========
-Route::get('/home/bibliotecario', function () {
+Route::post('/home/bibliotecario', function () {
     return view('home-bibliotecario');
 })->name('home.bibliotecario');
 
-Route::get('/home/aluno', function () {
+Route::post('/home/aluno', function () {
     return view('home-aluno');
 })->name('home.aluno');
 
