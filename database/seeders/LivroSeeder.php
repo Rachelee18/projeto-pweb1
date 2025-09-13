@@ -33,5 +33,13 @@ class LivroSeeder extends Seeder
             'isbn' => '1233333456789',
             'editora'=> 'Aleph'
         ]);
+
+        Livro::create([
+        'titulo' => 'O Mar de Monstros',
+        'autor' => 'Rick Riordan',
+        'ano_publicacao' => 2006,
+        'isbn' => '111987654321',
+        'editora'=> 'Intrínseca'
+    ]);
     }
 }
