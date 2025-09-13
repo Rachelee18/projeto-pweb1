@@ -1,29 +1,36 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\BibliotecarioController;
 
 // Página inicial (vai direto para select-role)
 Route::get('/', function () {
     return view('select-role');
 });
 
-// ========== LOGIN ==========
-Route::post('/login/bibliotecario', function () {
-    return view('login-bibliotecario');
-})->name('login.bibliotecario');
 
-Route::post('/login/aluno', function () {
-    return view('login-aluno');
-})->name('login.aluno');
+// ========== FORM DE LOGIN ==========
+Route::get('/login/aluno', [AlunoController::class, 'showLoginForm'])->name('login.aluno');
+Route::post('/login/aluno', [AlunoController::class, 'login'])->name('login.aluno.submit');
+
+Route::get('/login/bibliotecario', [BibliotecarioController::class, 'showLoginForm'])->name('login.bibliotecario');
+Route::post('/login/bibliotecario', [BibliotecarioController::class, 'login'])->name('login.bibliotecario.submit');
+
+Route::post('/logout/aluno', [AlunoController::class, 'logout'])->name('logout.aluno');
+Route::post('/logout/bibliotecario', [BibliotecarioController::class, 'logout'])->name('logout.bibliotecario');
+
 
 // ========== HOME ==========
-Route::post('/home/bibliotecario', function () {
+Route::get('/home/bibliotecario', function () {
     return view('home-bibliotecario');
 })->name('home.bibliotecario');
 
-Route::post('/home/aluno', function () {
+Route::get('/home/aluno', function () {
     return view('home-aluno');
 })->name('home.aluno');
+
 
 // ========== FUNCIONALIDADES ALUNO ==========
 Route::get('/pesquisar-livros', function () {
@@ -33,6 +40,7 @@ Route::get('/pesquisar-livros', function () {
 Route::get('/catalogo-livros', function () {
     return view('catalogo-livros');
 })->name('aluno.catalogo');
+
 
 // ========== FUNCIONALIDADES BIBLIOTECÁRIO ==========
 Route::get('/cadastrar-livro', function () {

@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bibliotecario;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class BibliotecarioController extends Controller
 {
+    public function showLoginForm()
+    {
+        return view('login-bibliotecario');
+    }
     public function login(Request $request)
     {
         $request->validate([
@@ -22,5 +28,10 @@ class BibliotecarioController extends Controller
         }
 
         return back()->withErrors(['email' => 'Credenciais inválidas']);
+    }
+    public function logout()
+    {
+        Session::forget(['bibliotecario_id', 'bibliotecario_nome']);
+        return redirect()->route('login.bibliotecario');
     }
 }
