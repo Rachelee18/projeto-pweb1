@@ -33,9 +33,7 @@ Route::get('/home/aluno', function () {
 
 
 // ========== FUNCIONALIDADES ALUNO ==========
-Route::get('/pesquisar-livros', function () {
-    return view('pesquisar-livros');
-})->name('aluno.pesquisar');
+Route::get('/pesquisar-livros', [AlunoController::class, 'pesquisarLivros'])->name('aluno.pesquisar');
 
 Route::get('/catalogo-livros', function () {
     return view('catalogo-livros');

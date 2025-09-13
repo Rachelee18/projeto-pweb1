@@ -30,6 +30,19 @@ class AlunoController extends Controller
 
         return back()->withErrors(['email' => 'Credenciais inválidas']);
     }
+
+    public function pesquisarLivros(Request $request)
+{
+    $query = $request->input('query'); // pega o que o usuário digitou
+
+    $livros = \App\Models\Livro::where('titulo', 'like', "%{$query}%")
+        ->orWhere('autor', 'like', "%{$query}%")
+        ->orWhere('isbn', 'like', "%{$query}%")
+        ->orWhere('editora', 'like', "%{$query}%")
+        ->get();
+
+    return view('pesquisar-livros', compact('livros', 'query'));
+}
     
 //  ====  LOGOUT ====
     public function logout()
