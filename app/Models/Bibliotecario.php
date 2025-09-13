@@ -10,7 +10,7 @@ class Bibliotecario extends Model
     use HasFactory;
 
     protected $table = 'bibliotecarios';
-    protected $primarykey = 'id';
+    protected $Primarykey = 'id';
     protected $fillable = [
         'nome',
         'email',
@@ -18,4 +18,3 @@ class Bibliotecario extends Model
     ];
     public $timestamps = false;
 }
-

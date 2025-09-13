@@ -13,6 +13,7 @@ class BibliotecarioController extends Controller
     {
         return view('login-bibliotecario');
     }
+
     public function login(Request $request)
     {
         $request->validate([
@@ -22,13 +23,15 @@ class BibliotecarioController extends Controller
 
         $user = Bibliotecario::where('email', $request->email)->first();
 
-        if ($user && $user->senha === $request->senha) {
-            session(['bibliotecario_id' => $user->id]);
+        if ($user && Hash::check($request->senha, $user->senha)) {
+            Session::put('bibliotecario_id', $user->id);
+            Session::put('bibliotecario_nome', $user->nome);
             return redirect()->route('home.bibliotecario');
         }
 
         return back()->withErrors(['email' => 'Credenciais inválidas']);
     }
+
     public function logout()
     {
         Session::forget(['bibliotecario_id', 'bibliotecario_nome']);
