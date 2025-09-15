@@ -15,14 +15,6 @@
             </svg>
         </a>
 
-        <!-- Ícone Usuário -->
-        <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M6 20c0-4 12-4 12 0"/>
-            </svg>
-        </span>
-
         <!-- Botão de Sair -->
         <a href="/select-role" class="icon" title="Sair">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
@@ -36,7 +28,7 @@
     <div style="padding:30px; text-align:center">
         <form action="{{ route('aluno.pesquisar') }}" method="GET">
             <input type="text" name="query" placeholder="Digite título, autor, ISBN ou editora..." 
-                   style="padding:10px; width:60%; border-radius:8px; border:1px solid #ccc;" value="{{ $query ?? '' }}">
+                style="padding:10px; width:60%; border-radius:8px; border:1px solid #ccc;" value="{{ $query ?? '' }}">
             <div style="margin-top:10px;">
                 <button type="submit"
                         style="padding:10px 20px; border-radius:8px; border:none; background:#3b6024; color:white; cursor:pointer;">

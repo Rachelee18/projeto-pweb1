@@ -16,6 +16,7 @@ class Livro extends Model
         'ano_publicacao',
         'isbn',
         'editora',
+        'quantidade'
     ];
 
     // para desabilitar os timestamps

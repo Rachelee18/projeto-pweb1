@@ -6,9 +6,10 @@ use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\BibliotecarioController;
 
 // Página inicial (vai direto para select-role)
+// Página inicial (vai direto para select-role)
 Route::get('/', function () {
     return view('select-role');
-});
+})->name('select.role');  // <-- aqui é o nome da rota
 
 
 // ========== FORM DE LOGIN ==========
@@ -35,9 +36,9 @@ Route::get('/home/aluno', function () {
 // ========== FUNCIONALIDADES ALUNO ==========
 Route::get('/pesquisar-livros', [AlunoController::class, 'pesquisarLivros'])->name('aluno.pesquisar');
 
-Route::get('/catalogo-livros', function () {
-    return view('catalogo-livros');
-})->name('aluno.catalogo');
+Route::get('/catalogo-livros', [AlunoController::class, 'catalogoAluno'])->name('aluno.catalogo');
+
+
 
 
 // ========== FUNCIONALIDADES BIBLIOTECÁRIO ==========
@@ -45,9 +46,13 @@ Route::get('/cadastrar-livro', function () {
     return view('cadastrar-livro');
 })->name('biblio.cadastrar');
 
+Route::post('/cadastrar-livro', [BibliotecarioController::class, 'cadastrarLivro'])->name('biblio.cadastrar.submit');
+
 Route::get('/catalogo-livros-biblio', function () {
     return view('catalogo-livros-biblio');
 })->name('biblio.catalogo');
+
+Route::get('/catalogo-livros-biblio', [BibliotecarioController::class, 'catalogo'])->name('biblio.catalogo');
 
 Route::get('/atualizar-livro', function () {
     return view('atualizar-livro');

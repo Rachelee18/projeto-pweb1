@@ -8,7 +8,20 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="icon">☰</div>
+        <div class="logo">
+            <h2>Bem-vindo(a), {{ session('bibliotecario_nome') }}</h2>
+        </div>
+
+        <form action="{{ route('logout.bibliotecario') }}" method="POST" class="logout-form">
+            @csrf
+            <button type="submit" class="logout-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M10 17l5-5-5-5"/>
+                    <path d="M4 12h11"/>
+                    <path d="M20 19V5a2 2 0 0 0-2-2H8" />
+                </svg>
+            </button>
+        </form>
     </div>
 
     <div class="container">

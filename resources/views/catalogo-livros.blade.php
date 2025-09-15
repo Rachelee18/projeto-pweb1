@@ -7,19 +7,29 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="/home-aluno" class="icon">
-            <!-- Ícone voltar -->
+        <a href="{{ route('home.aluno') }}" class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M15 18l-6-6 6-6"/>
+                <path d="M3 12l9-9 9 9"/>
+                <path d="M9 21V12h6v9"/>
             </svg>
         </a>
-        <h2 style="color:white">Catálogo de Livros</h2>
+
+        <!-- Ícone de logout -->
+        <form action="{{ route('logout.bibliotecario') }}" method="POST" class="logout-form">
+            @csrf
+            <button type="submit" class="logout-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M10 17l5-5-5-5"/>
+                    <path d="M4 12h11"/>
+                    <path d="M20 19V5a2 2 0 0 0-2-2H8" />
+                </svg>
+            </button>
+        </form>
     </div>
 
-    <div style="padding:30px; text-align:center">
-        <p>Aqui será exibida a lista de livros disponíveis na biblioteca.</p>
-        <!-- Exemplo de tabela futura -->
-        <table style="margin: 0 auto; border-collapse: collapse; width:80%; background:#fff;">
+    <!-- Container para a tabela -->
+    <div class="container">
+        <table style="border-collapse: collapse; width: 80%; background: #fff;">
             <thead style="background:#3b6024; color:white;">
                 <tr>
                     <th style="padding:10px;">Título</th>
@@ -29,12 +39,14 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($livros as $livro)
                 <tr>
-                    <td style="padding:10px;">Exemplo Livro</td>
-                    <td style="padding:10px;">Fulano de Tal</td>
-                    <td style="padding:10px;">123456789</td>
-                    <td style="padding:10px;">Editora X</td>
+                    <td style="padding:10px;">{{ $livro->titulo }}</td>
+                    <td style="padding:10px;">{{ $livro->autor }}</td>
+                    <td style="padding:10px;">{{ $livro->isbn }}</td>
+                    <td style="padding:10px;">{{ $livro->editora }}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

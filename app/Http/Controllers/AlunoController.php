@@ -13,6 +13,7 @@ class AlunoController extends Controller
     {
         return view('login-aluno');
     }
+
     public function login(Request $request)
     {
         $request->validate([
@@ -32,22 +33,30 @@ class AlunoController extends Controller
     }
 
     public function pesquisarLivros(Request $request)
-{
-    $query = $request->input('query'); // pega o que o usuário digitou
+    {
+        $query = $request->input('query');
 
-    $livros = \App\Models\Livro::where('titulo', 'like', "%{$query}%")
-        ->orWhere('autor', 'like', "%{$query}%")
-        ->orWhere('isbn', 'like', "%{$query}%")
-        ->orWhere('editora', 'like', "%{$query}%")
-        ->get();
+        $livros = \App\Models\Livro::where('titulo', 'like', "%{$query}%")
+            ->orWhere('autor', 'like', "%{$query}%")
+            ->orWhere('isbn', 'like', "%{$query}%")
+            ->orWhere('editora', 'like', "%{$query}%")
+            ->get();
 
-    return view('pesquisar-livros', compact('livros', 'query'));
-}
-    
-//  ====  LOGOUT ====
+        return view('pesquisar-livros', compact('livros', 'query'));
+    }
+
+    // ==== Catalogo ====
+    public function catalogoAluno()
+    {
+        $livros = \App\Models\Livro::all();
+        return view('catalogo-livros', compact('livros'));
+    }
+
+    // ==== LOGOUT ====
     public function logout()
     {
+        // Remove dados da sessão
         Session::forget(['aluno_id', 'aluno_nome']);
-        return redirect()->route('login.aluno');
+        return redirect()->route('select.role');
     }
 }
