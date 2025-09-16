@@ -72,14 +72,13 @@ class BibliotecarioController extends Controller
 
     }
 
-    // Tela inicial de atualização: mostra seleção
+    // Tela inicial de atualização: mostra seleção, e tambem o $todos_livros = Livro::all(); que é pra mostrar todos os livrs
     public function selecionarParaAtualizar()
     {
-        $todos_livros = Livro::all(); // Envia todos os livros
+        $todos_livros = Livro::all();
         return view('atualizar-livro', compact('todos_livros'));
     }
 
-    // Editar livro após escolha (pelo ID ou busca por nome)
     public function edit(Request $request)
     {
         if ($request->has('id')) {
@@ -95,7 +94,6 @@ class BibliotecarioController extends Controller
         return redirect()->route('biblio.selecionar')->with('erro', 'Nenhum livro selecionado.');
     }
 
-    // Atualiza o livro no banco
     public function update(Request $request, $id)
     {
         $request->validate([
