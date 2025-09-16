@@ -42,6 +42,15 @@
             </svg>
             Catálogo de Livros
         </a>
+
+    <a href="{{ route('aluno.emprestimo', ['aluno_id' => session('aluno_id')]) }}" class="card">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+        <path d="M4 4h16v16H4z"/>
+    </svg>
+    Buscar_livro_aluno_id
+    </a>
+
     </div>
 </body>
 </html>
