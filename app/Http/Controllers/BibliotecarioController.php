@@ -109,4 +109,23 @@ class BibliotecarioController extends Controller
         return redirect()->route('biblio.catalogo')->with('success', 'Livro atualizado com sucesso!');
     }
 
+    public function mostrarDeletar()
+    {
+        $livros = Livro::all(); // busca todos os livros
+        return view('deletar-livro', compact('livros')); // envia para a view
+    }
+
+    public function destroy(Request $request)
+    {
+    $request->validate([
+        'id' => 'required|integer|exists:livros,id'
+    ]);
+
+    $livro = Livro::findOrFail($request->id);
+    $livro->delete();
+
+    return redirect()->route('biblio.deletar')->with('success', 'Livro excluído com sucesso!');
+    }
+
+
 }
