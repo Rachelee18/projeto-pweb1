@@ -1,0 +1,325 @@
+{
+  "models": [
+    {
+      "name": "Aluno",
+      "properties": [
+        {
+          "name": "nome",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "email",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "senha",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "matricula",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "curso",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models",
+      "tableName": "alunos"
+    },
+    {
+      "name": "Bibliotecario",
+      "properties": [
+        {
+          "name": "nome",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "email",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "senha",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models",
+      "tableName": "bibliotecarios"
+    },
+    {
+      "name": "Emprestimo",
+      "properties": [
+        {
+          "name": "livro_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "aluno_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "data_emprestimo",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "data_devolucao",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "status",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models",
+      "tableName": "emprestimos"
+    },
+    {
+      "name": "Livro",
+      "properties": [
+        {
+          "name": "titulo",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "autor",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "ano_publicacao",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "isbn",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "editora",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "quantidade",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models",
+      "tableName": "livros"
+    },
+    {
+      "name": "User",
+      "properties": [
+        {
+          "name": "name",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "email",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "password",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    }
+  ],
+  "controllers": [
+    {
+      "name": "AlunoController",
+      "methods": [
+        {
+          "name": "showLoginForm",
+          "params": ""
+        },
+        {
+          "name": "login",
+          "params": "Request $request"
+        },
+        {
+          "name": "pesquisarLivros",
+          "params": "Request $request"
+        },
+        {
+          "name": "catalogoAluno",
+          "params": ""
+        },
+        {
+          "name": "logout",
+          "params": ""
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "BibliotecarioController",
+      "methods": [
+        {
+          "name": "showLoginForm",
+          "params": ""
+        },
+        {
+          "name": "login",
+          "params": "Request $request"
+        },
+        {
+          "name": "catalogo",
+          "params": ""
+        },
+        {
+          "name": "logout",
+          "params": ""
+        },
+        {
+          "name": "cadastrarLivro",
+          "params": "Request $request"
+        },
+        {
+          "name": "selecionarParaAtualizar",
+          "params": ""
+        },
+        {
+          "name": "edit",
+          "params": "Request $request"
+        },
+        {
+          "name": "update",
+          "params": "Request $request, $id"
+        },
+        {
+          "name": "mostrarDeletar",
+          "params": ""
+        },
+        {
+          "name": "destroy",
+          "params": "Request $request"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "Controller",
+      "methods": [],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "EmprestimoController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "meusEmprestimos",
+          "params": "$aluno_id"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "LivroController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "edit",
+          "params": "$id"
+        },
+        {
+          "name": "update",
+          "params": "Request $request, $id"
+        },
+        {
+          "name": "destroy",
+          "params": "$id"
+        },
+        {
+          "name": "catalogoAluno",
+          "params": ""
+        },
+        {
+          "name": "pesquisar",
+          "params": "Request $request"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    }
+  ],
+  "services": [],
+  "relationships": [
+    {
+      "sourceModel": "Emprestimo",
+      "relationshipType": "belongsTo",
+      "relationshipName": "livro",
+      "targetModel": "Livro::class"
+    },
+    {
+      "sourceModel": "Emprestimo",
+      "relationshipType": "belongsTo",
+      "relationshipName": "aluno",
+      "targetModel": "Aluno::class"
+    }
+  ],
+  "directories": {
+    ".": {
+      "models": [
+        "Aluno",
+        "Bibliotecario",
+        "Emprestimo",
+        "Livro",
+        "User"
+      ],
+      "controllers": [
+        "AlunoController",
+        "BibliotecarioController",
+        "Controller",
+        "EmprestimoController",
+        "LivroController"
+      ]
+    }
+  }
+}

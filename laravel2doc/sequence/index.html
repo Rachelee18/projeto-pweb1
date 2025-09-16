@@ -1,0 +1,2055 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sequence Diagrams - laravel/laravel</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<!-- Add Font Awesome CDN if not already included -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="navbar">
+  <div class="navbar-title">
+    <i class="fas fa-code-branch"></i> Laravel2Doc
+  </div>
+  <div class="navbar-links">
+    <a href="https://laravel2doc.netlify.app/"><i class="fas fa-house"></i> Home</a>
+    <a href="../erd/"><i class="fas fa-project-diagram"></i> ERD</a>
+    <a href="../uml/"><i class="fas fa-sitemap"></i> UML</a>
+    <a href="../sequence/"><i class="fas fa-stream"></i> Sequence</a>
+    <a href="../api/"><i class="fas fa-plug"></i> API</a>
+    <a href="https://github.com/Priom7/laravel2doc" target="_blank" class="github-link">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+  </div>
+</div>
+
+  <header>
+    <h1>Sequence Diagrams</h1>
+    <h2>laravel/laravel (Laravel v12.26.3)</h2>
+  </header>
+  
+  <nav>
+    <div class="controls">
+      <input type="text" id="search-diagrams" class="search-box" placeholder="Search diagrams...">
+      <select id="filter-type" class="select-box">
+        <option value="all">All Types</option>
+        <option value="list">List</option>
+        <option value="show">Show</option>
+        <option value="create">Create</option>
+        <option value="update">Update</option>
+        <option value="delete">Delete</option>
+        <option value="generic">Generic</option>
+      </select>
+      <select id="filter-controller" class="select-box">
+        <option value="all">All Controllers</option>
+        <option value="Aluno">Aluno</option>
+        <option value="Bibliotecario">Bibliotecario</option>
+        <option value=""></option>
+        <option value="Emprestimo">Emprestimo</option>
+        <option value="Livro">Livro</option>
+      </select>
+    </div>
+    <div class="controls">
+      <select id="diagram-theme" class="select-box">
+        <option value="default">Theme: Default</option>
+        <option value="forest">Theme: Forest</option>
+        <option value="dark">Theme: Dark</option>
+        <option value="neutral">Theme: Neutral</option>
+      </select>
+      <button class="btn btn-blue theme-toggle" id="theme-toggle">🌙</button>
+    </div>
+  </nav>
+  
+  <main>
+    <div class="dashboard">
+      <div class="stat-card">
+        <div class="stat-number">27</div>
+        <div class="stat-label">Total Diagrams</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Controllers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Create Operations</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-label">List Operations</div>
+      </div>
+    </div>
+    
+    <div class="chart-container" style="display: flex; gap: 2rem; margin-bottom: 2rem;">
+      <div style="flex: 1; background-color: var(--light-color); padding: 1rem; border-radius: 8px;">
+        <h3>Diagram Types Distribution</h3>
+        <canvas id="stats-chart" data-stats='{"totalDiagrams":27,"byType":{"generic":15,"update":4,"delete":2,"list":2,"create":4},"byController":{"Aluno":5,"Bibliotecario":10,"":0,"Emprestimo":4,"Livro":8}}'></canvas>
+      </div>
+      <div style="flex: 1; background-color: var(--light-color); padding: 1rem; border-radius: 8px;">
+        <h3>Controller Distribution</h3>
+        <canvas id="controller-chart" data-stats='{"totalDiagrams":27,"byType":{"generic":15,"update":4,"delete":2,"list":2,"create":4},"byController":{"Aluno":5,"Bibliotecario":10,"":0,"Emprestimo":4,"Livro":8}}'></canvas>
+      </div>
+    </div>
+    
+    <div class="tabs">
+      <div class="tab active" data-tab="all-diagrams">All Diagrams</div>
+      <div class="tab" data-tab="by-type">By Type</div>
+      <div class="tab" data-tab="by-controller">By Controller</div>
+    </div>
+    
+    <div id="all-diagrams" class="tab-content active">
+      <div class="diagram-grid">
+        
+      <div class="diagram-card" data-controller="Aluno" data-method="showLoginForm" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">showLoginForm</div>
+          <div class="diagram-description">Handles showLoginForm operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-showLoginForm.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Aluno" data-method="login" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">login</div>
+          <div class="diagram-description">Handles login operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Aluno</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-login.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Aluno" data-method="pesquisarLivros" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">pesquisarLivros</div>
+          <div class="diagram-description">Handles pesquisarLivros operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-pesquisarLivros.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Aluno" data-method="catalogoAluno" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">catalogoAluno</div>
+          <div class="diagram-description">Handles catalogoAluno operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-catalogoAluno.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Aluno" data-method="logout" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">logout</div>
+          <div class="diagram-description">Handles logout operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-logout.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="showLoginForm" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">showLoginForm</div>
+          <div class="diagram-description">Handles showLoginForm operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-showLoginForm.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="login" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">login</div>
+          <div class="diagram-description">Handles login operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Bibliotecario</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-login.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="catalogo" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">catalogo</div>
+          <div class="diagram-description">Handles catalogo operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-catalogo.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="logout" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">logout</div>
+          <div class="diagram-description">Handles logout operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-logout.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="cadastrarLivro" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">cadastrarLivro</div>
+          <div class="diagram-description">Handles cadastrarLivro operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-cadastrarLivro.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="selecionarParaAtualizar" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">selecionarParaAtualizar</div>
+          <div class="diagram-description">Handles selecionarParaAtualizar operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-selecionarParaAtualizar.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="mostrarDeletar" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">mostrarDeletar</div>
+          <div class="diagram-description">Handles mostrarDeletar operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-mostrarDeletar.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Emprestimo" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Emprestimo</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Emprestimo" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Aluno</span> <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Emprestimo" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Emprestimo</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Emprestimo" data-method="meusEmprestimos" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">meusEmprestimos</div>
+          <div class="diagram-description">Handles meusEmprestimos operation in EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Emprestimo</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-meusEmprestimos.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Livro" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Livro" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Livro" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Livro" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Livro" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Livro" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Livro" data-method="catalogoAluno" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">catalogoAluno</div>
+          <div class="diagram-description">Handles catalogoAluno operation in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-catalogoAluno.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Livro" data-method="pesquisar" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">pesquisar</div>
+          <div class="diagram-description">Handles pesquisar operation in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-pesquisar.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      </div>
+    </div>
+    
+    <div id="by-type" class="tab-content">
+      
+      <div class="type-section">
+        <h3>List Operations (2)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Emprestimo" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Emprestimo</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      
+      <div class="type-section">
+        <h3>Create Operations (4)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Emprestimo" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Aluno</span> <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Emprestimo" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Emprestimo</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="type-section">
+        <h3>Update Operations (4)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="type-section">
+        <h3>Delete Operations (2)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="type-section">
+        <h3>Generic Operations (15)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Aluno" data-method="showLoginForm" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">showLoginForm</div>
+          <div class="diagram-description">Handles showLoginForm operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-showLoginForm.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Aluno" data-method="login" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">login</div>
+          <div class="diagram-description">Handles login operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Aluno</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-login.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Aluno" data-method="pesquisarLivros" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">pesquisarLivros</div>
+          <div class="diagram-description">Handles pesquisarLivros operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-pesquisarLivros.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Aluno" data-method="catalogoAluno" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">catalogoAluno</div>
+          <div class="diagram-description">Handles catalogoAluno operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-catalogoAluno.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Aluno" data-method="logout" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">logout</div>
+          <div class="diagram-description">Handles logout operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-logout.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="showLoginForm" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">showLoginForm</div>
+          <div class="diagram-description">Handles showLoginForm operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-showLoginForm.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="login" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">login</div>
+          <div class="diagram-description">Handles login operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Bibliotecario</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-login.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="catalogo" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">catalogo</div>
+          <div class="diagram-description">Handles catalogo operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-catalogo.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="logout" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">logout</div>
+          <div class="diagram-description">Handles logout operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-logout.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="cadastrarLivro" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">cadastrarLivro</div>
+          <div class="diagram-description">Handles cadastrarLivro operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-cadastrarLivro.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="selecionarParaAtualizar" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">selecionarParaAtualizar</div>
+          <div class="diagram-description">Handles selecionarParaAtualizar operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-selecionarParaAtualizar.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="mostrarDeletar" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">mostrarDeletar</div>
+          <div class="diagram-description">Handles mostrarDeletar operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-mostrarDeletar.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Emprestimo" data-method="meusEmprestimos" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">meusEmprestimos</div>
+          <div class="diagram-description">Handles meusEmprestimos operation in EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Emprestimo</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-meusEmprestimos.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="catalogoAluno" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">catalogoAluno</div>
+          <div class="diagram-description">Handles catalogoAluno operation in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-catalogoAluno.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="pesquisar" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">pesquisar</div>
+          <div class="diagram-description">Handles pesquisar operation in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-pesquisar.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+    </div>
+    
+    <div id="by-controller" class="tab-content">
+      
+      <div class="controller-section">
+        <h3>Aluno Controller (5)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Aluno" data-method="showLoginForm" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">showLoginForm</div>
+          <div class="diagram-description">Handles showLoginForm operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-showLoginForm.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Aluno" data-method="login" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">login</div>
+          <div class="diagram-description">Handles login operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Aluno</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-login.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Aluno" data-method="pesquisarLivros" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">pesquisarLivros</div>
+          <div class="diagram-description">Handles pesquisarLivros operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-pesquisarLivros.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Aluno" data-method="catalogoAluno" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">catalogoAluno</div>
+          <div class="diagram-description">Handles catalogoAluno operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-catalogoAluno.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Aluno" data-method="logout" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Aluno</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">logout</div>
+          <div class="diagram-description">Handles logout operation in AlunoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AlunoController-logout.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>Bibliotecario Controller (10)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="showLoginForm" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">showLoginForm</div>
+          <div class="diagram-description">Handles showLoginForm operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-showLoginForm.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="login" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">login</div>
+          <div class="diagram-description">Handles login operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Bibliotecario</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-login.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="catalogo" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">catalogo</div>
+          <div class="diagram-description">Handles catalogo operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-catalogo.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="logout" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">logout</div>
+          <div class="diagram-description">Handles logout operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-logout.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="cadastrarLivro" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">cadastrarLivro</div>
+          <div class="diagram-description">Handles cadastrarLivro operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-cadastrarLivro.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="selecionarParaAtualizar" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">selecionarParaAtualizar</div>
+          <div class="diagram-description">Handles selecionarParaAtualizar operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-selecionarParaAtualizar.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="mostrarDeletar" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">mostrarDeletar</div>
+          <div class="diagram-description">Handles mostrarDeletar operation in BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-mostrarDeletar.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Bibliotecario" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>Bibliotecario</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from BibliotecarioController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_BibliotecarioController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      
+      <div class="controller-section">
+        <h3>Emprestimo Controller (4)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Emprestimo" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Emprestimo</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Emprestimo" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Aluno</span> <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Emprestimo" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Emprestimo</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Emprestimo" data-method="meusEmprestimos" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Emprestimo</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">meusEmprestimos</div>
+          <div class="diagram-description">Handles meusEmprestimos operation in EmprestimoController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Emprestimo</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EmprestimoController-meusEmprestimos.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>Livro Controller (8)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Livro" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="catalogoAluno" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">catalogoAluno</div>
+          <div class="diagram-description">Handles catalogoAluno operation in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-catalogoAluno.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Livro" data-method="pesquisar" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Livro</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">pesquisar</div>
+          <div class="diagram-description">Handles pesquisar operation in LivroController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Livro</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_LivroController-pesquisar.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <footer>
+    <p>Generated on 16/09/2025 at 20:20:26</p>
+    <p>Sequence Diagram Generator for Laravel</p>
+  </footer>
+  
+  <script src="assets/script.js"></script>
+</body>
+</html>
+  

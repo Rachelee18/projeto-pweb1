@@ -1,0 +1,366 @@
+{
+  "projectName": "laravel/laravel",
+  "projectVersion": "v12.26.3",
+  "generatedAt": "2025-09-16T23:20:27.029Z",
+  "diagrams": [
+    {
+      "id": "AlunoController-showLoginForm",
+      "name": "AlunoController::showLoginForm",
+      "controller": "Aluno",
+      "method": "showLoginForm",
+      "type": "generic",
+      "description": "Handles showLoginForm operation in AlunoController",
+      "fileName": "AlunoController_showLoginForm.md",
+      "models": [],
+      "timestamp": "2025-09-16T23:20:26.665Z"
+    },
+    {
+      "id": "AlunoController-login",
+      "name": "AlunoController::login",
+      "controller": "Aluno",
+      "method": "login",
+      "type": "generic",
+      "description": "Handles login operation in AlunoController",
+      "fileName": "AlunoController_login.md",
+      "models": [
+        "Aluno"
+      ],
+      "timestamp": "2025-09-16T23:20:26.668Z"
+    },
+    {
+      "id": "AlunoController-pesquisarLivros",
+      "name": "AlunoController::pesquisarLivros",
+      "controller": "Aluno",
+      "method": "pesquisarLivros",
+      "type": "generic",
+      "description": "Handles pesquisarLivros operation in AlunoController",
+      "fileName": "AlunoController_pesquisarLivros.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.685Z"
+    },
+    {
+      "id": "AlunoController-catalogoAluno",
+      "name": "AlunoController::catalogoAluno",
+      "controller": "Aluno",
+      "method": "catalogoAluno",
+      "type": "generic",
+      "description": "Handles catalogoAluno operation in AlunoController",
+      "fileName": "AlunoController_catalogoAluno.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.690Z"
+    },
+    {
+      "id": "AlunoController-logout",
+      "name": "AlunoController::logout",
+      "controller": "Aluno",
+      "method": "logout",
+      "type": "generic",
+      "description": "Handles logout operation in AlunoController",
+      "fileName": "AlunoController_logout.md",
+      "models": [],
+      "timestamp": "2025-09-16T23:20:26.701Z"
+    },
+    {
+      "id": "BibliotecarioController-showLoginForm",
+      "name": "BibliotecarioController::showLoginForm",
+      "controller": "Bibliotecario",
+      "method": "showLoginForm",
+      "type": "generic",
+      "description": "Handles showLoginForm operation in BibliotecarioController",
+      "fileName": "BibliotecarioController_showLoginForm.md",
+      "models": [],
+      "timestamp": "2025-09-16T23:20:26.704Z"
+    },
+    {
+      "id": "BibliotecarioController-login",
+      "name": "BibliotecarioController::login",
+      "controller": "Bibliotecario",
+      "method": "login",
+      "type": "generic",
+      "description": "Handles login operation in BibliotecarioController",
+      "fileName": "BibliotecarioController_login.md",
+      "models": [
+        "Bibliotecario"
+      ],
+      "timestamp": "2025-09-16T23:20:26.705Z"
+    },
+    {
+      "id": "BibliotecarioController-catalogo",
+      "name": "BibliotecarioController::catalogo",
+      "controller": "Bibliotecario",
+      "method": "catalogo",
+      "type": "generic",
+      "description": "Handles catalogo operation in BibliotecarioController",
+      "fileName": "BibliotecarioController_catalogo.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.706Z"
+    },
+    {
+      "id": "BibliotecarioController-logout",
+      "name": "BibliotecarioController::logout",
+      "controller": "Bibliotecario",
+      "method": "logout",
+      "type": "generic",
+      "description": "Handles logout operation in BibliotecarioController",
+      "fileName": "BibliotecarioController_logout.md",
+      "models": [],
+      "timestamp": "2025-09-16T23:20:26.717Z"
+    },
+    {
+      "id": "BibliotecarioController-cadastrarLivro",
+      "name": "BibliotecarioController::cadastrarLivro",
+      "controller": "Bibliotecario",
+      "method": "cadastrarLivro",
+      "type": "generic",
+      "description": "Handles cadastrarLivro operation in BibliotecarioController",
+      "fileName": "BibliotecarioController_cadastrarLivro.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.719Z"
+    },
+    {
+      "id": "BibliotecarioController-selecionarParaAtualizar",
+      "name": "BibliotecarioController::selecionarParaAtualizar",
+      "controller": "Bibliotecario",
+      "method": "selecionarParaAtualizar",
+      "type": "generic",
+      "description": "Handles selecionarParaAtualizar operation in BibliotecarioController",
+      "fileName": "BibliotecarioController_selecionarParaAtualizar.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.720Z"
+    },
+    {
+      "id": "BibliotecarioController-edit",
+      "name": "BibliotecarioController::edit",
+      "controller": "Bibliotecario",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in BibliotecarioController",
+      "fileName": "BibliotecarioController_edit.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.723Z"
+    },
+    {
+      "id": "BibliotecarioController-update",
+      "name": "BibliotecarioController::update",
+      "controller": "Bibliotecario",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in BibliotecarioController",
+      "fileName": "BibliotecarioController_update.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.732Z"
+    },
+    {
+      "id": "BibliotecarioController-mostrarDeletar",
+      "name": "BibliotecarioController::mostrarDeletar",
+      "controller": "Bibliotecario",
+      "method": "mostrarDeletar",
+      "type": "generic",
+      "description": "Handles mostrarDeletar operation in BibliotecarioController",
+      "fileName": "BibliotecarioController_mostrarDeletar.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.734Z"
+    },
+    {
+      "id": "BibliotecarioController-destroy",
+      "name": "BibliotecarioController::destroy",
+      "controller": "Bibliotecario",
+      "method": "destroy",
+      "type": "delete",
+      "description": "Removes a resource from BibliotecarioController",
+      "fileName": "BibliotecarioController_destroy.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.735Z"
+    },
+    {
+      "id": "EmprestimoController-index",
+      "name": "EmprestimoController::index",
+      "controller": "Emprestimo",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from EmprestimoController",
+      "fileName": "EmprestimoController_index.md",
+      "models": [
+        "Emprestimo"
+      ],
+      "timestamp": "2025-09-16T23:20:26.741Z"
+    },
+    {
+      "id": "EmprestimoController-create",
+      "name": "EmprestimoController::create",
+      "controller": "Emprestimo",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in EmprestimoController",
+      "fileName": "EmprestimoController_create.md",
+      "models": [
+        "Aluno",
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.747Z"
+    },
+    {
+      "id": "EmprestimoController-store",
+      "name": "EmprestimoController::store",
+      "controller": "Emprestimo",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in EmprestimoController",
+      "fileName": "EmprestimoController_store.md",
+      "models": [
+        "Emprestimo"
+      ],
+      "timestamp": "2025-09-16T23:20:26.749Z"
+    },
+    {
+      "id": "EmprestimoController-meusEmprestimos",
+      "name": "EmprestimoController::meusEmprestimos",
+      "controller": "Emprestimo",
+      "method": "meusEmprestimos",
+      "type": "generic",
+      "description": "Handles meusEmprestimos operation in EmprestimoController",
+      "fileName": "EmprestimoController_meusEmprestimos.md",
+      "models": [
+        "Emprestimo"
+      ],
+      "timestamp": "2025-09-16T23:20:26.751Z"
+    },
+    {
+      "id": "LivroController-index",
+      "name": "LivroController::index",
+      "controller": "Livro",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from LivroController",
+      "fileName": "LivroController_index.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.762Z"
+    },
+    {
+      "id": "LivroController-create",
+      "name": "LivroController::create",
+      "controller": "Livro",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in LivroController",
+      "fileName": "LivroController_create.md",
+      "models": [],
+      "timestamp": "2025-09-16T23:20:26.764Z"
+    },
+    {
+      "id": "LivroController-store",
+      "name": "LivroController::store",
+      "controller": "Livro",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in LivroController",
+      "fileName": "LivroController_store.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.768Z"
+    },
+    {
+      "id": "LivroController-edit",
+      "name": "LivroController::edit",
+      "controller": "Livro",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in LivroController",
+      "fileName": "LivroController_edit.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.769Z"
+    },
+    {
+      "id": "LivroController-update",
+      "name": "LivroController::update",
+      "controller": "Livro",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in LivroController",
+      "fileName": "LivroController_update.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.779Z"
+    },
+    {
+      "id": "LivroController-destroy",
+      "name": "LivroController::destroy",
+      "controller": "Livro",
+      "method": "destroy",
+      "type": "delete",
+      "description": "Removes a resource from LivroController",
+      "fileName": "LivroController_destroy.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.780Z"
+    },
+    {
+      "id": "LivroController-catalogoAluno",
+      "name": "LivroController::catalogoAluno",
+      "controller": "Livro",
+      "method": "catalogoAluno",
+      "type": "generic",
+      "description": "Handles catalogoAluno operation in LivroController",
+      "fileName": "LivroController_catalogoAluno.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.783Z"
+    },
+    {
+      "id": "LivroController-pesquisar",
+      "name": "LivroController::pesquisar",
+      "controller": "Livro",
+      "method": "pesquisar",
+      "type": "generic",
+      "description": "Handles pesquisar operation in LivroController",
+      "fileName": "LivroController_pesquisar.md",
+      "models": [
+        "Livro"
+      ],
+      "timestamp": "2025-09-16T23:20:26.786Z"
+    }
+  ],
+  "statistics": {
+    "totalDiagrams": 27,
+    "byType": {
+      "generic": 15,
+      "update": 4,
+      "delete": 2,
+      "list": 2,
+      "create": 4
+    },
+    "byController": {
+      "Aluno": 5,
+      "Bibliotecario": 10,
+      "": 0,
+      "Emprestimo": 4,
+      "Livro": 8
+    }
+  }
+}
