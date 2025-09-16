@@ -55,9 +55,9 @@ class EmprestimoController extends Controller
         $emprestimos = Emprestimo::with('livro')
             ->where('aluno_id', $aluno_id)
             ->get();
-        return response()->json($emprestimos);
+        //return response()->json($emprestimos);
         // retorna a view específica do aluno, só com os empréstimos dele, melhor do que usar o json
-        //return view('meus-emprestimos', compact('emprestimos'));
+        return view('meus-emprestimos', compact('emprestimos'));
 
     }
 }

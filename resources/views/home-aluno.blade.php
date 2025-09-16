@@ -48,7 +48,7 @@
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
         <path d="M4 4h16v16H4z"/>
     </svg>
-    Buscar_livro_aluno_id
+    Emprestimos
     </a>
 
     </div>
