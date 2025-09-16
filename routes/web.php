@@ -25,14 +25,19 @@ Route::post('/logout/bibliotecario', [BibliotecarioController::class, 'logout'])
 
 
 // ========== HOME ==========
-Route::get('/home/bibliotecario', function () {
-    return view('home-bibliotecario');
-})->name('home.bibliotecario');
-
 Route::get('/home/aluno', function () {
+    if (!session()->has('aluno_id')) {
+        return redirect()->route('login.aluno');
+    }
     return view('home-aluno');
 })->name('home.aluno');
 
+Route::get('/home/bibliotecario', function () {
+    if (!session()->has('bibliotecario_id')) {
+        return redirect()->route('login.bibliotecario');
+    }
+    return view('home-bibliotecario');
+})->name('home.bibliotecario');
 
 // ========== FUNCIONALIDADES ALUNO ==========
 Route::get('/pesquisar-livros', [AlunoController::class, 'pesquisarLivros'])->name('aluno.pesquisar');
