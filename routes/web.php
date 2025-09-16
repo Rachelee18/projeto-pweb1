@@ -7,7 +7,6 @@ use App\Http\Controllers\BibliotecarioController;
 use App\Http\Controllers\EmprestimoController;
 
 // Página inicial (vai direto para select-role)
-// Página inicial (vai direto para select-role)
 Route::get('/', function () {
     return view('select-role');
 })->name('select.role');  // <-- aqui é o nome da rota
@@ -55,15 +54,23 @@ Route::get('/cadastrar-livro', function () {
 
 Route::post('/cadastrar-livro', [BibliotecarioController::class, 'cadastrarLivro'])->name('biblio.cadastrar.submit');
 
+
 Route::get('/catalogo-livros-biblio', function () {
     return view('catalogo-livros-biblio');
 })->name('biblio.catalogo');
 
 Route::get('/catalogo-livros-biblio', [BibliotecarioController::class, 'catalogo'])->name('biblio.catalogo');
 
-Route::get('/atualizar-livro', function () {
-    return view('atualizar-livro');
-})->name('biblio.atualizar');
+
+Route::get('/atualizar-livro', [BibliotecarioController::class, 'selecionarParaAtualizar'])
+    ->name('biblio.selecionar');
+
+Route::get('/editar-livro', [BibliotecarioController::class, 'edit'])
+    ->name('biblio.editar');
+
+Route::post('/atualizar-livro/{id}', [BibliotecarioController::class, 'update'])
+    ->name('biblio.atualizar.submit');
+
 
 Route::get('/deletar-livro', function () {
     return view('deletar-livro');
