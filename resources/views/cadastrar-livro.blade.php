@@ -16,12 +16,12 @@
             </svg>
         </a>
         <!-- Logout -->
-        <a href="/select-role" class="icon" title="Sair"
+        <a href="{{ route('select.role') }}" class="icon" title="Sair"
             onclick="return confirm('Deseja encerrar a sessão?')">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M10 17l5-5-5-5"/>
-                <path d="M4 12h11"/>
-                <path d="M20 19V5a2 2 0 0 0-2-2H8"/>
+                <path d="M10 17l5-5-5-5" />
+                <path d="M4 12h11" />
+                <path d="M20 19V5a2 2 0 0 0-2-2H8" />
             </svg>
         </a>
     </div>

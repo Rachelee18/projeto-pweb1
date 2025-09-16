@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Registrar Empréstimo</title>
     <link rel="stylesheet" href="{{ asset('css/emprestimo.css') }}">
 </head>
+
 <body>
     <div class="navbar">
         <!-- Ícone Home -->
@@ -16,7 +18,8 @@
         </a>
 
         <!-- Logout -->
-        <a href="/select-role" class="icon" title="Sair" onclick="return confirm('Deseja encerrar a sessão?')">
+        <a href="{{ route('select.role') }}" class="icon" title="Sair"
+            onclick="return confirm('Deseja encerrar a sessão?')">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M10 17l5-5-5-5" />
                 <path d="M4 12h11" />
@@ -62,4 +65,5 @@
         </form>
     </div>
 </body>
+
 </html>
