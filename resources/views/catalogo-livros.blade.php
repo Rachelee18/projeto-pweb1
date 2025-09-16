@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+
 <head>
     <meta charset="UTF-8">
     <title>Catálogo de Livros</title>
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/catalogo-livros.css') }}">
 </head>
+
 
 <body>
     <div class="navbar">
@@ -16,7 +18,8 @@
             </svg>
         </a>
 
-        <!-- Ícone de logout -->
+
+        <!--- Ícone de logout -->
         <a href="{{ route('select.role') }}" class="icon" title="Sair"
             onclick="return confirm('Deseja encerrar a sessão?')">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
@@ -27,7 +30,7 @@
         </a>
     </div>
 
-    <!-- Container para a tabela -->
+
     <div class="container">
         <table style="border-collapse: collapse; width: 80%; background: #fff;">
             <thead style="background:#3b6024; color:white;">
@@ -51,5 +54,6 @@
         </table>
     </div>
 </body>
+
 
 </html>

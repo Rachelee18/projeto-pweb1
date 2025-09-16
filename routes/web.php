@@ -44,7 +44,7 @@ Route::get('/pesquisar-livros', [AlunoController::class, 'pesquisarLivros'])->na
 Route::get('/catalogo-livros', [AlunoController::class, 'catalogoAluno'])->name('aluno.catalogo');
 
 // essa é uma funcionalidade bonus
-//Route::get('/{aluno_id}/emprestimos', [EmprestimoController::class, 'meusEmprestimos'])->name('aluno.emprestimo');
+Route::get('/{aluno_id}/emprestimos', [EmprestimoController::class, 'meusEmprestimos'])->name('aluno.emprestimo');
 //so tirar o comentario
 
 
