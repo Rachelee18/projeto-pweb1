@@ -68,5 +68,47 @@ class BibliotecarioController extends Controller
         ]);
 
         return redirect()->route('home.bibliotecario')->with('success', 'Livro cadastrado com sucesso!');
+
+
     }
+
+    // Tela inicial de atualização: mostra seleção
+    public function selecionarParaAtualizar()
+    {
+        $todos_livros = Livro::all(); // Envia todos os livros
+        return view('atualizar-livro', compact('todos_livros'));
+    }
+
+    // Editar livro após escolha (pelo ID ou busca por nome)
+    public function edit(Request $request)
+    {
+        if ($request->has('id')) {
+            $livro = Livro::findOrFail($request->id);
+            return view('atualizar-livro', compact('livro'));
+        }
+
+        if ($request->has('nome')) {
+            $livros = Livro::where('titulo', 'like', "%{$request->nome}%")->get();
+            return view('atualizar-livro', compact('livros'));
+        }
+
+        return redirect()->route('biblio.selecionar')->with('erro', 'Nenhum livro selecionado.');
+    }
+
+    // Atualiza o livro no banco
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'autor' => 'required|string|max:255',
+            'isbn' => 'required|string|max:20',
+            'quantidade' => 'required|integer',
+        ]);
+
+        $livro = Livro::findOrFail($id);
+        $livro->update($request->all());
+
+        return redirect()->route('biblio.catalogo')->with('success', 'Livro atualizado com sucesso!');
+    }
+
 }
