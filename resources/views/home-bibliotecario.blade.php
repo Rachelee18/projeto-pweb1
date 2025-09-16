@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Bibliotecário</title>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 </head>
+
 <body>
     <div class="navbar">
         <div class="logo">
@@ -16,8 +18,8 @@
             @csrf
             <button type="submit" class="logout-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M10 17l5-5-5-5"/>
-                    <path d="M4 12h11"/>
+                    <path d="M10 17l5-5-5-5" />
+                    <path d="M4 12h11" />
                     <path d="M20 19V5a2 2 0 0 0-2-2H8" />
                 </svg>
             </button>
@@ -52,6 +54,16 @@
             </svg>
             <span>Deletar Livro</span>
         </a>
+
+        <a href="{{ route('bibliotecario.emprestimos') }}" class="card-emp">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            </svg>
+            <span>Registrar Empréstimo</span>
+        </a>
     </div>
 </body>
+
 </html>
