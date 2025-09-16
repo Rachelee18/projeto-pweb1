@@ -1,4 +1,4 @@
-/* Body e fonte */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -6,7 +6,6 @@ body {
     padding: 0;
 }
 
-/* Navbar */
 .navbar {
     background-color: #3b6024;
     padding: 10px 20px;
@@ -21,7 +20,6 @@ body {
     stroke: white;
 }
 
-/* Container centralizado */
 .container {
     max-width: 600px;
     margin: 40px auto;
@@ -31,14 +29,12 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Título */
 .container h2 {
     text-align: center;
     color: #3b6024;
     margin-bottom: 20px;
 }
 
-/* Formulário */
 form {
     display: flex;
     flex-direction: column;
@@ -58,7 +54,6 @@ form input[type="date"] {
     font-size: 16px;
 }
 
-/* Botão */
 form button {
     padding: 12px;
     background-color: #3b6024;
@@ -87,4 +82,3 @@ p.success {
 p.error {
     color: red;
 }
-

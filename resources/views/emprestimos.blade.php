@@ -7,9 +7,24 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="{{ route('home.bibliotecario') }}" class="icon">Home</a>
-        <a href="/select-role" class="icon">Sair</a>
+        <!-- Ícone Home -->
+        <a href="{{ route('home.bibliotecario') }}" class="icon" title="Home">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M3 12l9-9 9 9" />
+                <path d="M9 21V12h6v9" />
+            </svg>
+        </a>
+
+        <!-- Logout -->
+        <a href="/select-role" class="icon" title="Sair" onclick="return confirm('Deseja encerrar a sessão?')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M10 17l5-5-5-5" />
+                <path d="M4 12h11" />
+                <path d="M20 19V5a2 2 0 0 0-2-2H8" />
+            </svg>
+        </a>
     </div>
+
 
     <div class="container">
         <h2>Registrar Empréstimo</h2>
