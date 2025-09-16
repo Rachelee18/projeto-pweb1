@@ -43,8 +43,9 @@ Route::get('/pesquisar-livros', [AlunoController::class, 'pesquisarLivros'])->na
 
 Route::get('/catalogo-livros', [AlunoController::class, 'catalogoAluno'])->name('aluno.catalogo');
 
-Route::get('/{aluno_id}/emprestimos', [EmprestimoController::class, 'meusEmprestimos'])->name('aluno.emprestimo');
-
+// essa é uma funcionalidade bonus
+//Route::get('/{aluno_id}/emprestimos', [EmprestimoController::class, 'meusEmprestimos'])->name('aluno.emprestimo');
+//so tirar o comentario
 
 
 // ========== FUNCIONALIDADES BIBLIOTECÁRIO ==========
@@ -75,3 +76,11 @@ Route::post('/atualizar-livro/{id}', [BibliotecarioController::class, 'update'])
 Route::get('/deletar-livro', function () {
     return view('deletar-livro');
 })->name('biblio.deletar');
+
+// outra funcionalidade bonus para o biblio de emprestar 
+Route::get('/bibliotecario/emprestimos', [EmprestimoController::class, 'create'])
+    ->name('bibliotecario.emprestimos');
+
+// Salvar empréstimo
+Route::post('/emprestimos', [EmprestimoController::class, 'store'])
+    ->name('emprestimos.store');

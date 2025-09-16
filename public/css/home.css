@@ -81,3 +81,37 @@ body {
     margin-bottom: 12px;
     stroke: white;
 }
+
+.card-emp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 480px;
+    height: 70px;
+    padding: 10px;
+    background-color: #3b6024;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-emp svg {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 5px;
+    stroke: white;
+}
+
+.card-emp span {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-emp:hover {
+    background-color: #2f4d1a;
+    transform: translateY(-2px);
+}
