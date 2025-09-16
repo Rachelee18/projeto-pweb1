@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\BibliotecarioController;
+use App\Http\Controllers\EmprestimoController;
 
 // Página inicial (vai direto para select-role)
 // Página inicial (vai direto para select-role)
@@ -43,6 +44,7 @@ Route::get('/pesquisar-livros', [AlunoController::class, 'pesquisarLivros'])->na
 
 Route::get('/catalogo-livros', [AlunoController::class, 'catalogoAluno'])->name('aluno.catalogo');
 
+Route::get('/{aluno_id}/emprestimos', [EmprestimoController::class, 'meusEmprestimos'])->name('aluno.emprestimo');
 
 
 
