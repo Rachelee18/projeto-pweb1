@@ -9,3 +9,161 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+
+:root {
+    --green: #2f9e41;
+    --red: #cd191e;
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #f5f5f5;
+    --dark-bg: #121212;
+    --dark-surface: #1e1e1e;
+    --dark-text: #eaeaea;
+    --transition: 0.3s ease;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--gray);
+    color: var(--black);
+    transition: background var(--transition), color var(--transition);
+}
+
+body.dark {
+    background: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+header {
+    background: var(--green);
+    color: var(--white);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--white);
+}
+
+nav a {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 600;
+    transition: color var(--transition);
+}
+
+nav a:hover {
+    color: var(--red);
+}
+
+main {
+    padding: 2rem;
+    min-height: calc(100vh - 120px);
+}
+
+footer {
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+body.dark header {
+    background: var(--dark-surface);
+}
+
+body.dark nav a {
+    color: var(--dark-text);
+}
+
+body.dark nav a:hover {
+    color: var(--green);
+}
+
+body.dark footer {
+    background: var(--dark-surface);
+    color: var(--dark-text);
+}
+
+/* SELECIONAR PERFIL */
+.role-container {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.role-container .title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--green);
+}
+
+.role-options {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.role-card {
+    flex: 1 1 280px;
+    background: var(--white);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--black);
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
+}
+
+.role-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.role-card .icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: auto auto 1rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.role-card.student {
+    border: 3px solid var(--green);
+}
+
+.role-card.student .icon {
+    background: var(--green);
+}
+
+.role-card.librarian {
+    border: 3px solid var(--red);
+}
+
+.role-card.librarian .icon {
+    background: var(--red);
+}
+
+body.dark .role-card {
+    background: var(--dark-surface);
+    color: var(--dark-text);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
