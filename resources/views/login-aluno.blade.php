@@ -1,31 +1,34 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Aluno</title>
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-</head>
+@section('title', 'Login do Aluno')
 
-<body>
+@section('content')
+<div class="login-container">
     <div class="login-box">
-        <h2>Login</h2>
+        <h2 class="title">Acesso do Estudante</h2>
+
         @if($errors->any())
-            <div style="color:red">
+            <div class="error-box">
                 @foreach($errors->all() as $error)
                     <p>{{ $error }}</p>
                 @endforeach
             </div>
         @endif
 
-        <form action="{{ route('login.aluno.submit') }}" method="POST">
+        <form action="{{ route('login.aluno.submit') }}" method="POST" class="login-form">
             @csrf
-            <input type="email" name="email" placeholder="Email" required><br><br>
-            <input type="password" name="senha" placeholder="Senha" required><br><br>
-            <button type="submit">Entrar</button>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Email institucional" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="senha" placeholder="Senha" required>
+            </div>
+            <button type="submit" class="btn">Entrar</button>
         </form>
     </div>
-</body>
+</div>
+@endsection
 
-</html>
+@push('styles')
+    @vite(["resources/css/login.css"])
+@endpush
