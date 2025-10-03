@@ -1,31 +1,37 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Bibliotecário</title>
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-</head>
+@section('title', 'Login do Bibliotecário')
 
-<body>
+@section('content')
+<div class="login-container">
     <div class="login-box">
-        <h2>Login</h2>
+        <h2 class="title librarian-title">Acesso da Biblioteca</h2>
+        <p class="text-xs text-gray-600 mb-10">
+            Bibliotecários e funcionários apenas. 
+        </p>
+
         @if($errors->any())
-            <div style="color:red">
+            <div class="error-box">
                 @foreach($errors->all() as $error)
                     <p>{{ $error }}</p>
                 @endforeach
             </div>
         @endif
 
-        <form action="{{ route('login.bibliotecario.submit') }}" method="POST">
+        <form action="{{ route('login.bibliotecario.submit') }}" method="POST" class="login-form">
             @csrf
-            <input type="email" name="email" placeholder="Email" required><br><br>
-            <input type="password" name="senha" placeholder="Senha" required><br><br>
-            <button type="submit">Entrar</button>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Email institucional" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="senha" placeholder="Senha" required>
+            </div>
+            <button type="submit" class="btn librarian-btn">Entrar</button>
         </form>
     </div>
-</body>
+</div>
+@endsection
 
-</html>
+@push('styles')
+    @vite(['resources/css/login-biblioteca.css'])
+@endpush

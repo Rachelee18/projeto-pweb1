@@ -1,0 +1,93 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 70vh;
+}
+
+.login-box {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+body.dark .login-box {
+    background: var(--dark-surface);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.librarian-title {
+    background: linear-gradient(45deg, var(--red), #ff4d4d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.error-box {
+    background: rgba(205, 25, 30, 0.1);
+    color: var(--red);
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: none;
+    border-radius: 0.8rem;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    transition: box-shadow var(--transition), background var(--transition);
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(205, 25, 30, 0.3);
+    background: var(--white);
+}
+
+body.dark .input-group input {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--dark-text);
+}
+
+.btn {
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition);
+}
+
+.librarian-btn {
+    background: var(--red);
+    color: var(--white);
+}
+
+.librarian-btn:hover {
+    background: #a81515;
+    transform: translateY(-2px);
+}
