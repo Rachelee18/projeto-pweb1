@@ -16,67 +16,43 @@
 
 .form-card h2 {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--green);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
+    gap: 0.4rem;
 }
 
 .form-group label {
     font-weight: 600;
-    margin-bottom: 0.4rem;
     color: var(--black);
 }
 body.dark .form-group label { color: var(--dark-text); }
 
-.input-icon {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-icon .icon {
-    position: absolute;
-    left: 12px;
-    width: 20px;
-    height: 20px;
-    stroke-width: 2;
-    color: #777;
-}
-
-.input-icon input {
-    width: 100%;
-    padding: 0.8rem 0.8rem 0.8rem 2.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.6rem;
-    font-size: 1rem;
-    transition: border 0.2s, box-shadow 0.2s;
-}
-
-.input-icon input:focus {
-    outline: none;
-    border: 1px solid var(--green);
-    box-shadow: 0 0 0 3px rgba(47, 158, 65, 0.25);
-}
-
-.form-group input[type=file] {
+.form-group input, .form-group select {
     padding: 0.8rem;
     border: 1px solid #ccc;
     border-radius: 0.6rem;
     font-size: 1rem;
     transition: border 0.2s, box-shadow 0.2s;
-}   
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border: 1px solid var(--green);
+    box-shadow: 0 0 0 3px rgba(47, 158, 65, 0.25);
+}
 
 .cover-preview {
     margin-top: 0.5rem;
@@ -91,8 +67,7 @@ body.dark .form-group label { color: var(--dark-text); }
 
 .btn-submit {
     margin-top: 2rem;
-    padding: 1rem;
-    width: 100%;
+    padding: 0.9rem;
     background: var(--green);
     color: var(--white);
     font-weight: 600;
@@ -100,8 +75,8 @@ body.dark .form-group label { color: var(--dark-text); }
     border-radius: 0.6rem;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.2s ease;
+    width: 100%;
 }
-
 .btn-submit:hover {
     background: #248534;
     transform: translateY(-2px);
@@ -111,18 +86,3 @@ body.dark .form-card {
     background: var(--dark-surface);
     box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
-
-.special-isbn input {
-    border: 2px solid transparent;
-    background-image: linear-gradient(var(--white), var(--white)), 
-                      linear-gradient(45deg, var(--green), var(--red));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    animation: gradient-border 3s linear infinite;
-}
-
-@keyframes gradient-border {
-    0% { background-image: linear-gradient(var(--white), var(--white)), linear-gradient(45deg, var(--green), var(--red)); }
-    50% { background-image: linear-gradient(var(--white), var(--white)), linear-gradient(45deg, var(--red), var(--green)); }
-    100% { background-image: linear-gradient(var(--white), var(--white)), linear-gradient(45deg, var(--green), var(--red)); }
-}   

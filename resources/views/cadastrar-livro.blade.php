@@ -54,6 +54,14 @@
                     <input type="number" id="quantidade" name="quantidade" placeholder="Ex: 10" required>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="capa">Capa do Livro</label>
+                <input type="file" id="capa" name="capa" accept="image/*" onchange="previewImage(event)">
+                <div class="cover-preview">
+                    <img id="coverPreview" src="{{ $livro->capa_url ?? asset('images/cover/sem-capa.png') }}" alt="Capa do livro">
+                </div>
+            </div>
         </div>
 
         <button type="submit" class="btn-submit">Salvar</button>
@@ -89,5 +97,12 @@ document.getElementById('isbn').addEventListener('blur', async function() {
         console.error('Erro ao buscar dados do ISBN:', error);
     }
 });
+
+function previewImage(event) {
+    const [file] = event.target.files;
+    if (file) {
+        document.getElementById('coverPreview').src = URL.createObjectURL(file);
+    }
+}
 </script>
 @endpush
