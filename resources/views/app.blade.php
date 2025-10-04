@@ -46,6 +46,7 @@
 
     <script>
         document.addEventListener('keydown', (e) => {
+            if (e.target.matches('input, textarea')) return;
             if (e.key.toLowerCase() === 'd') {
                 document.body.classList.toggle('dark');
             }
