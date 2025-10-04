@@ -1,0 +1,91 @@
+.emprestimos-container {
+    padding: 2rem;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--black);
+}
+body.dark .section-title { color: var(--dark-text); }
+
+.no-loans {
+    text-align: center;
+    color: #777;
+    font-size: 1rem;
+}
+
+/* Lista de empréstimos em cards */
+.loan-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.loan-card {
+    background: var(--white);
+    border-radius: 1rem;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.loan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.loan-card img {
+    width: 90px;
+    height: 120px;
+    border-radius: 0.6rem;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.loan-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loan-info h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--green);
+}
+
+.loan-info .autor {
+    margin: 0.2rem 0 0.6rem 0;
+    font-size: 0.9rem;
+    color: #444;
+}
+body.dark .loan-info .autor { color: #bbb; }
+
+.loan-info p {
+    margin: 0.2rem 0;
+    font-size: 0.85rem;
+    color: #555;
+}
+body.dark .loan-info p { color: var(--dark-text); }
+
+/* Status */
+.status {
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.6rem;
+    font-size: 0.85rem;
+}
+
+.status.ativo { background: rgba(47, 158, 65, 0.15); color: var(--green); }
+.status.devolvido { background: rgba(0, 0, 0, 0.1); color: var(--black); }
+.status.atrasado { background: rgba(205, 25, 30, 0.15); color: var(--red); }
+
+body.dark .status.ativo { background: rgba(47, 158, 65, 0.25); }
+body.dark .status.devolvido { background: rgba(255, 255, 255, 0.15); }
+body.dark .status.atrasado { background: rgba(205, 25, 30, 0.25); }

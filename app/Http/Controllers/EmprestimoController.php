@@ -60,4 +60,11 @@ class EmprestimoController extends Controller
         return view('meus-emprestimos', compact('emprestimos'));
 
     }
+
+    public function listarAjax($aluno_id) {
+        $emprestimos = Emprestimo::where('aluno_id', $aluno_id)->with('livro')->get();
+        return view('partials.emprestimos', compact('emprestimos'));
+    }
+
+
 }

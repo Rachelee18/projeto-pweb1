@@ -48,7 +48,9 @@ Route::prefix('aluno')->group(function () {
     Route::get('/{aluno_id}/meus-emprestimos', [EmprestimoController::class, 'meusEmprestimos'])
         ->name('aluno.emprestimo');
 });
-//so tirar o comentario
+
+Route::get('/aluno/{aluno_id}/emprestimos/ajax', [EmprestimoController::class, 'listarAjax'])
+     ->name('aluno.emprestimos.ajax');
 
 
 // ========== FUNCIONALIDADES BIBLIOTECÁRIO ==========
