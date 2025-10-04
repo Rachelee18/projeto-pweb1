@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class BibliotecarioController extends Controller
 {
+    // ==== LOGIN ====
     public function showLoginForm()
     {
         return view('login-bibliotecario');
@@ -32,47 +33,56 @@ class BibliotecarioController extends Controller
 
         return back()->withErrors(['email' => 'Credenciais inválidas']);
     }
-    // ==== catalogo ===
+
+    // ==== LOGOUT ====
+    public function logout()
+    {
+        Session::forget(['bibliotecario_id', 'bibliotecario_nome']);
+        return redirect()->route('select.role');
+    }
+
+    // ==== CATÁLOGO ====
     public function catalogo()
     {
         $livros = Livro::all();
         return view('catalogo-livros-biblio', compact('livros'));
     }
 
-
-    // ==== LOGOUT ===
-    public function logout()
-    {
-        Session::forget(['bibliotecario_id', 'bibliotecario_nome']);
-        return redirect()->route('select.role'); // Redireciona para select-role
-    }
-
+    // ==== CADASTRAR LIVRO ====
     public function cadastrarLivro(Request $request)
     {
         $request->validate([
             'titulo' => 'required|string|max:255',
             'autor' => 'required|string|max:255',
             'isbn' => 'required|string|max:50',
-            'editora' => 'required|string|max:255',
+            'editora' => 'nullable|string|max:255',
             'ano_publicacao' => 'required|integer',
-            'quantidade' => 'required|integer',
+            'quantidade' => 'required|integer|min:0',
+            'capa' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ]);
 
-        Livro::create([
-            'titulo' => $request->titulo,
-            'autor' => $request->autor,
-            'isbn' => $request->isbn,
-            'editora' => $request->editora,
-            'ano_publicacao' => $request->ano_publicacao,
-            'quantidade' => $request->quantidade,
-        ]);
+        $livro = new Livro();
+        $livro->titulo = $request->titulo;
+        $livro->autor = $request->autor;
+        $livro->isbn = $request->isbn;
+        $livro->editora = $request->editora;
+        $livro->ano_publicacao = $request->ano_publicacao;
+        $livro->quantidade = $request->quantidade;
+
+        // upload da capa
+        if ($request->hasFile('capa')) {
+            $file = $request->file('capa');
+            $filename = time() . '_' . preg_replace('/\s+/', '_', $file->getClientOriginalName());
+            $file->move(public_path('images/cover'), $filename);
+            $livro->capa = 'images/cover/' . $filename;
+        }
+
+        $livro->save();
 
         return redirect()->route('home.bibliotecario')->with('success', 'Livro cadastrado com sucesso!');
-
-
     }
 
-    // Tela inicial de atualização: mostra seleção, e tambem o $todos_livros = Livro::all(); que é pra mostrar todos os livrs
+    // ==== ATUALIZAR LIVRO ====
     public function selecionarParaAtualizar()
     {
         $todos_livros = Livro::all();
@@ -99,33 +109,56 @@ class BibliotecarioController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:255',
             'autor' => 'required|string|max:255',
-            'isbn' => 'required|string|max:20',
-            'quantidade' => 'required|integer',
+            'isbn' => 'nullable|string|max:50',
+            'editora' => 'nullable|string|max:255',
+            'ano_publicacao' => 'required|integer',
+            'quantidade' => 'required|integer|min:0',
+            'capa' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ]);
 
         $livro = Livro::findOrFail($id);
-        $livro->update($request->all());
+        $livro->titulo = $request->titulo;
+        $livro->autor = $request->autor;
+        $livro->isbn = $request->isbn;
+        $livro->editora = $request->editora;
+        $livro->ano_publicacao = $request->ano_publicacao;
+        $livro->quantidade = $request->quantidade;
+
+        // upload da nova capa (se houver)
+        if ($request->hasFile('capa')) {
+            $file = $request->file('capa');
+            $filename = time() . '_' . preg_replace('/\s+/', '_', $file->getClientOriginalName());
+            $file->move(public_path('images/cover'), $filename);
+            $livro->capa = 'images/cover/' . $filename;
+        }
+
+        $livro->save();
 
         return redirect()->route('biblio.catalogo')->with('success', 'Livro atualizado com sucesso!');
     }
 
+    // ==== DELETAR LIVRO ====
     public function mostrarDeletar()
     {
-        $livros = Livro::all(); // busca todos os livros
-        return view('deletar-livro', compact('livros')); // envia para a view
+        $livros = Livro::all();
+        return view('deletar-livro', compact('livros'));
     }
 
     public function destroy(Request $request)
     {
-    $request->validate([
-        'id' => 'required|integer|exists:livros,id'
-    ]);
+        $request->validate([
+            'id' => 'required|integer|exists:livros,id'
+        ]);
 
-    $livro = Livro::findOrFail($request->id);
-    $livro->delete();
+        $livro = Livro::findOrFail($request->id);
 
-    return redirect()->route('biblio.deletar')->with('success', 'Livro excluído com sucesso!');
+        // remove a capa do servidor se existir
+        if ($livro->capa && file_exists(public_path($livro->capa))) {
+            unlink(public_path($livro->capa));
+        }
+
+        $livro->delete();
+
+        return redirect()->route('biblio.deletar')->with('success', 'Livro excluído com sucesso!');
     }
-
-
 }
