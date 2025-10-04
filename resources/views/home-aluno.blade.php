@@ -1,56 +1,79 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Aluno</title>
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-</head>
-<body>
-    <div class="navbar"> 
-        <div class="logo">
-            <h2>Bem-vindo(a), {{ session('aluno_nome') }}</h2>
-        </div>
+@php
+    class Emprestimo {
+        public $livros;
 
-        <form action="{{ route('logout.bibliotecario') }}" method="POST" class="logout-form">
-            @csrf
-            <button type="submit" class="logout-icon">
-                <a href="/select-role" class="icon" title="Sair">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M10 17l5-5-5-5"/>
-                        <path d="M4 12h11"/>
-                        <path d="M20 19V5a2 2 0 0 0-2-2H8"/>
-                    </svg>
-                </a>
-            </button>
-        </form>
-    </div>
+        public function isEmpty(): bool {
+            return true;
+        }
+    }
+    $emprestimos = new Emprestimo();
+@endphp
 
-    <div class="container">
-        <a href="{{ route('aluno.pesquisar') }}" class="card">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+@extends('app')
+
+@section('title', 'Página Inicial - Aluno')
+
+@section('content')
+<div class="home-container">
+    <h2 class="welcome">Bem-vindo(a), <span>{{ session('aluno_nome') }}</span></h2>
+
+    <div class="quick-actions">
+        <a href="{{ route('aluno.pesquisar') }}" class="action-card green">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8"/>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"/>
             </svg>
-            Pesquisar Livro
+            <span>Pesquisar Livro</span>
         </a>
 
-        <a href="{{ route('aluno.catalogo') }}" class="card">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+        <a href="{{ route('aluno.catalogo') }}" class="action-card black">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                 <path d="M4 4h16v16H4z"/>
             </svg>
-            Catálogo de Livros
+            <span>Catálogo de Livros</span>
         </a>
 
-    <a href="{{ route('aluno.emprestimo', ['aluno_id' => session('aluno_id')]) }}" class="card-emp">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-        <path d="M4 4h16v16H4z"/>
-    </svg>
-    Emprestimos
-    </a>
+        <a href="{{ route('aluno.emprestimos.ajax', ['aluno_id' => session('aluno_id')]) }}" 
+        class="action-card red" 
+        id="load-emprestimos">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M4 4h16v16H4z"/>
+            </svg>
+            <span>Meus Empréstimos</span>
+        </a>
+
 
     </div>
-</body>
-</html>
+
+    <div class="section">
+        <div id="emprestimos-content"></div>
+    </div>
+</div>
+@endsection
+
+@push('styles')
+    @vite(['resources/css/home-aluno.css'])
+@endpush
+
+@push('scripts')
+<script>
+document.getElementById('load-emprestimos').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const url = e.currentTarget.getAttribute('href');
+    const contentBox = document.getElementById('emprestimos-content');
+
+    contentBox.innerHTML = "<p>Carregando seus empréstimos...</p>";
+
+    try {
+        const resp = await fetch(url);
+        const html = await resp.text();
+        contentBox.innerHTML = html;
+    } catch (err) {
+        contentBox.innerHTML = "<p style='color:red'>Erro ao carregar empréstimos.</p>";
+    }
+});
+</script>
+@endpush
+
