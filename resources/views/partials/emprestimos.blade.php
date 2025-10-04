@@ -1,5 +1,5 @@
 <div class="emprestimos-container">
-    <h3 class="section-title">Seus Empréstimos</h3>
+    <h3 class="section-title">Meus Empréstimos</h3>
 
     @if($emprestimos->isEmpty())
         <p class="no-loans">Você não possui empréstimos ativos.</p>
