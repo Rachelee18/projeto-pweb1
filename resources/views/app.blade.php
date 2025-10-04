@@ -12,7 +12,10 @@
     <header>
         <a href="{{ url('/') }}" class="logo">BibWeb</a>
         <nav>
-            
+            <a href="{{ route('home.aluno') }}">Início</a>
+            <a href="{{ route('emprestimos.store') }}">Empréstimos</a>
+            <a href="{{ route('aluno.catalogo') }}">Livros</a>
+            <a href="{{ route('logout.aluno') }}">Sair</a>
         </nav>
     </header>
 
