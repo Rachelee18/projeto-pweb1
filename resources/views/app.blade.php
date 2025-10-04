@@ -12,10 +12,27 @@
     <header>
         <a href="{{ url('/') }}" class="logo">BibWeb</a>
         <nav>
-            <a href="{{ route('home.aluno') }}">Início</a>
-            <a href="{{ route('emprestimos.store') }}">Empréstimos</a>
-            <a href="{{ route('aluno.catalogo') }}">Livros</a>
-            <a href="{{ route('logout.aluno') }}">Sair</a>
+            @if(session()->has('aluno_id'))
+                <a href="{{ route('home.aluno') }}">Início</a>
+                <a href="{{ route('aluno.emprestimo', ['aluno_id' => session('aluno_id')]) }}">Meus Empréstimos</a>
+                <a href="{{ route('aluno.catalogo') }}">Catálogo</a>
+                <form action="{{ route('logout.aluno') }}" method="POST" style="display:inline;">
+                    @csrf
+                    <button type="submit" class="logout-btn">Sair</button>
+                </form>
+            @elseif(session()->has('bibliotecario_id'))
+                <a href="{{ route('home.bibliotecario') }}">Início</a>
+                <a href="{{ route('bibliotecario.emprestimos') }}">Gerenciar Empréstimos</a>
+                <a href="{{ route('biblio.catalogo') }}">Livros</a>
+                <a href="{{ route('biblio.cadastrar') }}">Cadastrar Livro</a>
+                <form action="{{ route('logout.bibliotecario') }}" method="POST" style="display:inline;">
+                    @csrf
+                    <button type="submit" class="logout-btn">Sair</button>
+                </form>
+            @else
+                <a href="{{ route('login.aluno') }}">Login Aluno</a>
+                <a href="{{ route('login.bibliotecario') }}">Login Bibliotecário</a>
+            @endif
         </nav>
     </header>
 
