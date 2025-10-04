@@ -22,7 +22,7 @@
                 <div class="book-list">
                     @foreach($livros as $livro)
                         <div class="book-card">
-                            <img src="{{ $livro->capa_url ?? asset('images/sem-capa.png') }}" alt="Capa do livro">
+                            <img src="{{ $livro->capa_url ?? asset('images/cover/sem-capa.png') }}" alt="Capa do livro">
                             <div class="book-info">
                                 <h4>{{ $livro->titulo }}</h4>
                                 <p class="autor">{{ $livro->autor }}</p>

@@ -12,7 +12,7 @@
         <div class="loan-list">
             @foreach($emprestimos as $emp)
                 <div class="loan-card">
-                    <img src="{{ $emp->livro->capa_url ?? asset('images/sem-capa.png') }}" alt="Capa do livro">
+                    <img src="{{ $emp->livro->capa_url ?? asset('images/cover/sem-capa.png') }}" alt="Capa do livro">
                     <div class="loan-info">
                         <h4>{{ $emp->livro->titulo }}</h4>
                         <p class="autor">{{ $emp->livro->autor }}</p>
