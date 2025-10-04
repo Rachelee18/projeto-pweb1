@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="catalogo-container">
-    <h2 class="section-title">📚 Catálogo de Livros</h2>
+    <h2 class="section-title">Catálogo de Livros</h2>
 
     <!-- Barra de pesquisa -->
     <form action="{{ route('aluno.pesquisar') }}" method="GET" class="search-form">
@@ -22,7 +22,7 @@
         <div class="book-list" id="bookList">
             @foreach($livros as $livro)
                 <div class="book-card">
-                    <img src="{{ $livro->capa_url ?? asset('img/sem-capa.png') }}" alt="Capa do livro">
+                    <img src="{{ $livro->capa_url ?? asset('images/sem-capa.png') }}" alt="Capa do livro">
                     <div class="book-info">
                         <h4>{{ $livro->titulo }}</h4>
                         <p class="autor">{{ $livro->autor }}</p>
