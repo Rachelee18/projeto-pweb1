@@ -1,23 +1,22 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\BibliotecarioController;
 use App\Http\Controllers\EmprestimoController;
 
-// Página inicial (vai direto para select-role)
-Route::get('/', function () {
-    return view('select-role');
-})->name('select.role');  // <-- aqui é o nome da rota
+// ========== PÁGINA INICIAL ==========
+Route::get('/', fn() => view('select-role'))->name('select.role');
 
 
-// ========== FORM DE LOGIN ==========
-Route::get('/login/aluno', [AlunoController::class, 'showLoginForm'])->name('login.aluno');
-Route::post('/login/aluno', [AlunoController::class, 'login'])->name('login.aluno.submit');
+// ========== LOGIN & LOGOUT ==========
+Route::prefix('login')->group(function () {
+    Route::get('/aluno', [AlunoController::class, 'showLoginForm'])->name('login.aluno');
+    Route::post('/aluno', [AlunoController::class, 'login'])->name('login.aluno.submit');
 
-Route::get('/login/bibliotecario', [BibliotecarioController::class, 'showLoginForm'])->name('login.bibliotecario');
-Route::post('/login/bibliotecario', [BibliotecarioController::class, 'login'])->name('login.bibliotecario.submit');
+    Route::get('/bibliotecario', [BibliotecarioController::class, 'showLoginForm'])->name('login.bibliotecario');
+    Route::post('/bibliotecario', [BibliotecarioController::class, 'login'])->name('login.bibliotecario.submit');
+});
 
 Route::post('/logout/aluno', [AlunoController::class, 'logout'])->name('logout.aluno');
 Route::post('/logout/bibliotecario', [BibliotecarioController::class, 'logout'])->name('logout.bibliotecario');
@@ -38,56 +37,44 @@ Route::get('/home/bibliotecario', function () {
     return view('home-bibliotecario');
 })->name('home.bibliotecario');
 
-// ========== FUNCIONALIDADES ALUNO ==========
-Route::get('/pesquisar-livros', [AlunoController::class, 'pesquisarLivros'])->name('aluno.pesquisar');
 
-Route::get('/catalogo-livros', [AlunoController::class, 'catalogoAluno'])->name('aluno.catalogo');
-
-// essa é uma funcionalidade bonus
+// ========== FUNCIONALIDADES DO ALUNO ==========
 Route::prefix('aluno')->group(function () {
+    Route::get('/pesquisar-livros', [AlunoController::class, 'pesquisarLivros'])->name('aluno.pesquisar');
+    Route::get('/catalogo-livros', [AlunoController::class, 'catalogoAluno'])->name('aluno.catalogo');
+
+    // Meus empréstimos
     Route::get('/{aluno_id}/meus-emprestimos', [EmprestimoController::class, 'meusEmprestimos'])
         ->name('aluno.emprestimo');
+
+    // Versão AJAX para SPA-like
+    Route::get('/{aluno_id}/emprestimos/ajax', [EmprestimoController::class, 'listarAjax'])
+        ->name('aluno.emprestimos.ajax');
 });
 
-Route::get('/aluno/{aluno_id}/emprestimos/ajax', [EmprestimoController::class, 'listarAjax'])
-     ->name('aluno.emprestimos.ajax');
 
+// ========== FUNCIONALIDADES DO BIBLIOTECÁRIO ==========
+Route::prefix('bibliotecario')->group(function () {
+    // Catálogo
+    Route::get('/catalogo-livros', [BibliotecarioController::class, 'catalogo'])->name('biblio.catalogo');
 
-// ========== FUNCIONALIDADES BIBLIOTECÁRIO ==========
-Route::get('/cadastrar-livro', function () {
-    return view('cadastrar-livro');
-})->name('biblio.cadastrar');
+    // Cadastro de livro
+    Route::get('/cadastrar-livro', fn() => view('cadastrar-livro'))->name('biblio.cadastrar');
+    Route::post('/cadastrar-livro', [BibliotecarioController::class, 'cadastrarLivro'])
+        ->name('biblio.cadastrar.submit');
 
-Route::post('/cadastrar-livro', [BibliotecarioController::class, 'cadastrarLivro'])->name('biblio.cadastrar.submit');
+    // Atualizar livro
+    Route::get('/atualizar-livro', [BibliotecarioController::class, 'selecionarParaAtualizar'])->name('biblio.selecionar');
+    Route::get('/editar-livro', [BibliotecarioController::class, 'edit'])->name('biblio.editar');
+    Route::post('/atualizar-livro/{id}', [BibliotecarioController::class, 'update'])->name('biblio.atualizar.submit');
 
+    // Deletar livro
+    Route::get('/deletar-livro', [BibliotecarioController::class, 'mostrarDeletar'])->name('biblio.deletar');
+    Route::post('/deletar-livro', [BibliotecarioController::class, 'destroy'])->name('biblio.deletar.submit');
 
-Route::get('/catalogo-livros-biblio', function () {
-    return view('catalogo-livros-biblio');
-})->name('biblio.catalogo');
+    // Empréstimos
+    Route::get('/emprestimos', [EmprestimoController::class, 'create'])->name('bibliotecario.emprestimos');
+});
 
-Route::get('/catalogo-livros-biblio', [BibliotecarioController::class, 'catalogo'])->name('biblio.catalogo');
-
-
-Route::get('/atualizar-livro', [BibliotecarioController::class, 'selecionarParaAtualizar'])
-    ->name('biblio.selecionar');
-
-Route::get('/editar-livro', [BibliotecarioController::class, 'edit'])
-    ->name('biblio.editar');
-
-Route::post('/atualizar-livro/{id}', [BibliotecarioController::class, 'update'])
-    ->name('biblio.atualizar.submit');
-
-
-Route::get('/deletar-livro', [BibliotecarioController::class, 'mostrarDeletar'])->name('biblio.deletar');
-Route::post('/deletar-livro', [BibliotecarioController::class, 'destroy'])
-    ->name('biblio.deletar.submit');
-
-
-
-// outra funcionalidade bonus para o biblio de emprestar 
-Route::get('/bibliotecario/emprestimos', [EmprestimoController::class, 'create'])
-    ->name('bibliotecario.emprestimos');
-
-// Salvar empréstimo
-Route::post('/emprestimos', [EmprestimoController::class, 'store'])
-    ->name('emprestimos.store');
+// Salvar empréstimo (fora do grupo pq é POST geral)
+Route::post('/emprestimos', [EmprestimoController::class, 'store'])->name('emprestimos.store');
