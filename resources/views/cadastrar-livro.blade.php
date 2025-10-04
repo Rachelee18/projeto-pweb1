@@ -1,55 +1,93 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Livro</title>
-    <link rel="stylesheet" href="{{ asset('css/cadastrar-livro.css') }}">
-</head>
-<body>
-    <div class="navbar">
-        <!-- Ícone Home -->
-        <a href="{{ route('home.bibliotecario') }}" class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M3 12l9-9 9 9"/>
-                <path d="M9 21V12h6v9"/>
-            </svg>
-        </a>
-        <!-- Logout -->
-        <a href="{{ route('select.role') }}" class="icon" title="Sair"
-            onclick="return confirm('Deseja encerrar a sessão?')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M10 17l5-5-5-5" />
-                <path d="M4 12h11" />
-                <path d="M20 19V5a2 2 0 0 0-2-2H8" />
-            </svg>
-        </a>
-    </div>
+@extends('app')
 
-    <div class="container">
-        <form class="form-card" method="POST" action="{{ route('biblio.cadastrar.submit') }}">
-            @csrf
-            <h2>Cadastrar Livro</h2>
-            <label>Título:</label>
-            <input type="text" name="titulo" required>
+@section('title', 'Cadastrar Livro')
 
-            <label>Autor:</label>
-            <input type="text" name="autor" required>
+@section('content')
+<div class="form-container">
+    <form class="form-card" method="POST" action="{{ route('biblio.cadastrar.submit') }}">
+        @csrf
+        <h2>Cadastrar Livro</h2>
 
-            <label>ISBN:</label>
-            <input type="text" name="isbn" required>
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="isbn">ISBN</label>
+                <div class="input-icon special-isbn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 4h16v16H4z"/>
+                        <path d="M9 9h6v6H9z"/>
+                    </svg>
+                    <input type="text" id="isbn" name="isbn" placeholder="Digite ou escaneie o ISBN" required>
+                </div>
+            </div>
 
-            <label>Editora:</label>
-            <input type="text" name="editora" required>
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <div class="input-icon">
+                    <input type="text" id="titulo" name="titulo" placeholder="Ex: Estruturas de Dados" required>
+                </div>
+            </div>
 
-            <label>Ano de Publicação:</label>
-            <input type="number" name="ano_publicacao" required>
+            <div class="form-group">
+                <label for="autor">Autor</label>
+                <div class="input-icon">
+                    <input type="text" id="autor" name="autor" placeholder="Ex: Robert Lafore" required>
+                </div>
+            </div>
 
-            <label>Quantidade:</label>
-            <input type="number" name="quantidade" required>
+            <div class="form-group">
+                <label for="editora">Editora</label>
+                <div class="input-icon">
+                    <input type="text" id="editora" name="editora" placeholder="Ex: Pearson" required>
+                </div>
+            </div>
 
-            <button type="submit">Salvar</button>
-        </form>
-    </div>
-</body>
-</html>
+            <div class="form-group">
+                <label for="ano_publicacao">Ano de Publicação</label>
+                <div class="input-icon">
+                    <input type="number" id="ano_publicacao" name="ano_publicacao" placeholder="Ex: 2021" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="quantidade">Quantidade</label>
+                <div class="input-icon">
+                    <input type="number" id="quantidade" name="quantidade" placeholder="Ex: 10" required>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Salvar</button>
+    </form>
+</div>
+@endsection
+
+@push('styles')
+    @vite(['resources/css/cadastrar-livro.css'])
+@endpush
+
+@push('scripts')
+<script>
+document.getElementById('isbn').addEventListener('blur', async function() {
+    const isbn = this.value.replace(/[^0-9X]/gi, '');
+    if (isbn.length < 10) return;
+
+    try {
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
+        const data = await response.json();
+
+        if (data.totalItems > 0) {
+            const book = data.items[0].volumeInfo;
+
+            document.getElementById('titulo').value = book.title || '';
+            document.getElementById('autor').value = (book.authors && book.authors.join(', ')) || '';
+            document.getElementById('editora').value = book.publisher || '';
+            document.getElementById('ano_publicacao').value = book.publishedDate ? book.publishedDate.substring(0,4) : '';
+        } else {
+            alert('Livro não encontrado pelo ISBN informado.');
+        }
+    } catch (error) {
+        console.error('Erro ao buscar dados do ISBN:', error);
+    }
+});
+</script>
+@endpush
