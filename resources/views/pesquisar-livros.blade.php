@@ -1,65 +1,46 @@
-<!DOCTYPE html> 
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Pesquisar Livros</title>
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-</head>
-<body>
-    <div class="navbar"> 
-        <!-- Ícone Home -->
-        <a href="{{ route('home.aluno') }}" class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M3 12l9-9 9 9"/>
-                <path d="M9 21V12h6v9"/>
-            </svg>
-        </a>
+@extends('app')
 
-        <!-- Botão de Sair -->
-        <a href="/select-role" class="icon" title="Sair">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M10 17l5-5-5-5"/>
-                <path d="M4 12h11"/>
-                <path d="M20 19V5a2 2 0 0 0-2-2H8"/>
-            </svg>
-        </a>
-    </div>
+@section('title', 'Pesquisar Livros')
 
-    <div style="padding:30px; text-align:center">
-        <form action="{{ route('aluno.pesquisar') }}" method="GET">
-            <input type="text" name="query" placeholder="Digite título, autor, ISBN ou editora..." 
-                style="padding:10px; width:60%; border-radius:8px; border:1px solid #ccc;" value="{{ $query ?? '' }}">
-            <div style="margin-top:10px;">
-                <button type="submit"
-                        style="padding:10px 20px; border-radius:8px; border:none; background:#3b6024; color:white; cursor:pointer;">
-                    Buscar
-                </button>
-                <a href="{{ route('aluno.pesquisar') }}">
-                    <button type="button" style="padding:10px 20px; border-radius:8px; border:none; background:#777; color:white; cursor:pointer;">
-                        Limpar Pesquisa
-                    </button>
-                </a>
-            </div>
-        </form>
-    </div>
+@section('content')
+<div class="pesquisa-container">
+    <h2 class="section-title">Pesquisar Livros</h2>
 
-    <!-- Mostrar resultados somente se houver pesquisa -->
+    <form action="{{ route('aluno.pesquisar') }}" method="GET" class="search-form">
+        <input type="text" name="query" placeholder="Digite título, autor, ISBN ou editora..."
+               value="{{ $query ?? '' }}">
+        <div class="buttons">
+            <button type="submit" class="btn buscar">Buscar</button>
+            <a href="{{ route('aluno.pesquisar') }}" class="btn limpar">Limpar</a>
+        </div>
+    </form>
+
     @if(isset($livros) && !empty($query))
-        <div style="padding:30px; text-align:center">
+        <div class="resultados">
             @if(count($livros) > 0)
-                <h3>Resultados da pesquisa:</h3>
-                <ul style="list-style:none; padding:0;">
+                <h3 class="result-title">Resultados para "{{ $query }}"</h3>
+                <div class="book-list">
                     @foreach($livros as $livro)
-                        <li style="margin-bottom:10px; padding:10px; border:1px solid #ccc; border-radius:8px;">
-                            <strong>{{ $livro->titulo }}</strong> - {{ $livro->autor }}<br>
-                            ISBN: {{ $livro->isbn }} - Editora: {{ $livro->editora }} - Ano: {{ $livro->ano_publicacao }}
-                        </li>
+                        <div class="book-card">
+                            <img src="{{ $livro->capa_url ?? asset('images/sem-capa.png') }}" alt="Capa do livro">
+                            <div class="book-info">
+                                <h4>{{ $livro->titulo }}</h4>
+                                <p class="autor">{{ $livro->autor }}</p>
+                                <p><strong>ISBN:</strong> {{ $livro->isbn }}</p>
+                                <p><strong>Editora:</strong> {{ $livro->editora }}</p>
+                                <p><strong>Ano:</strong> {{ $livro->ano_publicacao }}</p>
+                            </div>
+                        </div>
                     @endforeach
-                </ul>
+                </div>
             @else
-                <p>Nenhum livro encontrado.</p>
+                <p class="no-books">Nenhum livro encontrado.</p>
             @endif
         </div>
     @endif
-</body>
-</html>
+</div>
+@endsection
+
+@push('styles')
+    @vite(['resources/css/pesquisar-livros.css'])
+@endpush

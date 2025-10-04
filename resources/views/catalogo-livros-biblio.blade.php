@@ -1,60 +1,54 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('app')
 
+@section('title', 'Catálogo de Livros')
 
-<head>
-    <meta charset="UTF-8">
-    <title>Catálogo de Livros</title>
-    <link rel="stylesheet" href="{{ asset('css/catalogo-livros.css') }}">
-</head>
+@section('content')
+<div class="catalogo-container">
+    <h2 class="section-title">📚 Catálogo de Livros</h2>
 
+    <!-- Barra de pesquisa -->
+    <form action="{{ route('aluno.pesquisar') }}" method="GET" class="search-form">
+        <input type="text" name="query" placeholder="Digite título, autor, ISBN ou editora..."
+               value="{{ $query ?? '' }}">
+        <div class="buttons">
+            <button type="submit" class="btn buscar">Buscar</button>
+            <a href="{{ route('aluno.pesquisar') }}" class="btn limpar">Limpar</a>
+        </div>
+    </form>
 
-<body>
-    <div class="navbar">
-        <a href="{{ route('home.bibliotecario') }}" class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M3 12l9-9 9 9" />
-                <path d="M9 21V12h6v9" />
-            </svg>
-        </a>
+    @if($livros->isEmpty())
+        <p class="no-books">Nenhum livro encontrado.</p>
+    @else
+        <div class="book-list" id="bookList">
+            @foreach($livros as $livro)
+                <div class="book-card">
+                    <img src="{{ $livro->capa_url ?? asset('img/sem-capa.png') }}" alt="Capa do livro">
+                    <div class="book-info">
+                        <h4>{{ $livro->titulo }}</h4>
+                        <p class="autor">{{ $livro->autor }}</p>
+                        <p><strong>ISBN:</strong> {{ $livro->isbn }}</p>
+                        <p><strong>Editora:</strong> {{ $livro->editora }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
+</div>
+@endsection
 
+@push('styles')
+    @vite(['resources/css/catalogo-livros.css', 'resources/css/pesquisar-livros.css'])
+@endpush
 
-        <!-- Ícone de logout -->
-        <a href="{{ route('select.role') }}" class="icon" title="Sair"
-            onclick="return confirm('Deseja encerrar a sessão?')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M10 17l5-5-5-5" />
-                <path d="M4 12h11" />
-                <path d="M20 19V5a2 2 0 0 0-2-2H8" />
-            </svg>
-        </a>
-    </div>
-
-
-    <!-- Container para a tabela -->
-    <div class="container">
-        <table style="border-collapse: collapse; width: 80%; background: #fff;">
-            <thead style="background:#3b6024; color:white;">
-                <tr>
-                    <th style="padding:10px;">Título</th>
-                    <th style="padding:10px;">Autor</th>
-                    <th style="padding:10px;">ISBN</th>
-                    <th style="padding:10px;">Editora</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($livros as $livro)
-                    <tr>
-                        <td style="padding:10px;">{{ $livro->titulo }}</td>
-                        <td style="padding:10px;">{{ $livro->autor }}</td>
-                        <td style="padding:10px;">{{ $livro->isbn }}</td>
-                        <td style="padding:10px;">{{ $livro->editora }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</body>
-
-
-</html>
+@push('scripts')
+<script>
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    let filter = this.value.toLowerCase();
+    let books = document.querySelectorAll('#bookList .book-card');
+    books.forEach(book => {
+        let text = book.textContent.toLowerCase();
+        book.style.display = text.includes(filter) ? 'flex' : 'none';
+    });
+});
+</script>
+@endpush
