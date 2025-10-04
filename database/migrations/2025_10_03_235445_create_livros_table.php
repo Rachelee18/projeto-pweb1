@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('isbn')->nullable();
             $table->string('editora')->nullable();
             $table->integer('quantidade')->default(0);
+            $table->string('capa')->nullable()->default("/images/cover/sem-capa.png");
+            $table->timestamps();
         });
     }
 
